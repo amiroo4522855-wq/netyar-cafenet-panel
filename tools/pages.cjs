@@ -18,6 +18,8 @@ const path = require('node:path');
 const ROOT = path.resolve(__dirname, '..');
 const DOCS = path.join(ROOT, 'docs');
 const REPO = 'https://github.com/amiroo4522855-wq/netyar-cafenet-panel';
+const RAW = 'https://raw.githubusercontent.com/amiroo4522855-wq/netyar-cafenet-panel/main';
+const PAGES = process.env.NETYAR_PAGES_URL || 'https://amiroo4522855-wq.github.io/netyar-cafenet-panel';
 const LIVE = process.argv[2] || process.env.NETYAR_LIVE_URL || '';
 
 const esc = (s) => String(s == null ? '' : s)
@@ -51,7 +53,7 @@ function build() {
 
   const rows = featured.map((s) => {
     const logo = s.logo
-      ? `<span class="lg"><img src="${esc(REPO)}/raw/main/public/${esc(s.logo.replace(/^\//, ''))}" alt="" loading="lazy" width="28" height="28"></span>`
+      ? `<span class="lg"><img src="${esc(RAW)}/public/${esc(s.logo.replace(/^\//, ''))}" alt="" loading="lazy" width="28" height="28"></span>`
       : `<span class="lg"><span class="mono" style="background:hsl(${hue(s.domain)} 62% 62%)">${esc(s.monogram || s.name.slice(0, 1))}</span></span>`;
     return `<tr>
       <td class="c-nm">${logo}<div><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer nofollow">${esc(s.name)}</a><span class="org">${esc(s.organization || '')}</span></div></td>
@@ -76,9 +78,11 @@ function build() {
 <meta property="og:locale" content="fa_IR">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
-<meta property="og:image" content="${esc(REPO)}/raw/main/public/pwa/icon-512.png">
+<meta property="og:image" content="${esc(RAW)}/public/pwa/icon-512.png">
+<meta property="og:url" content="${esc(PAGES)}/">
+<link rel="canonical" href="${esc(PAGES)}/">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="${esc(REPO)}/raw/main/public/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="${esc(RAW)}/public/favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
 ${JSON.stringify({
   '@context': 'https://schema.org',
@@ -89,14 +93,15 @@ ${JSON.stringify({
   applicationCategory: 'UtilitiesApplication',
   operatingSystem: 'Any',
   inLanguage: 'fa-IR',
-  url: REPO,
+  url: PAGES + '/',
+  sameAs: [REPO],
   codeRepository: REPO,
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'IRR' },
   author: { '@type': 'Organization', name: 'NetYar', url: REPO },
 })}
 </script>
 <style>
-@font-face{font-family:'Vazirmatn';src:url('${esc(REPO)}/raw/main/public/fonts/Vazirmatn-var.woff2') format('woff2-variations');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Vazirmatn';src:url('${esc(RAW)}/public/fonts/Vazirmatn-var.woff2') format('woff2-variations');font-weight:100 900;font-display:swap}
 :root{--bg:#08090c;--bg2:#0d1117;--s1:#12151c;--s2:#171b24;--line:#232833;--t1:#eef2f7;--t2:#a8b3c4;--t3:#7b8798;--ice:#6fc7ff;--mint:#2ec4b2;--r:14px}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -275,6 +280,24 @@ NETYAR_ACCESS_CODE='رمز-دلخواه' npm start
 
   fs.writeFileSync(path.join(DOCS, 'index.html'), html);
   fs.writeFileSync(path.join(DOCS, '.nojekyll'), '');
+  fs.writeFileSync(path.join(DOCS, 'robots.txt'),
+`User-agent: *
+Allow: /
+
+Sitemap: ${PAGES}/sitemap.xml
+`);
+  const today = new Date().toISOString().slice(0, 10);
+  fs.writeFileSync(path.join(DOCS, 'sitemap.xml'),
+`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${PAGES}/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+`);
   return { bytes: Buffer.byteLength(html), featured: featured.length, cats: cats.length, sites: sites.length };
 }
 

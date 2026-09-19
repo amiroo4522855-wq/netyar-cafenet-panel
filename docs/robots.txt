@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amiroo4522855-wq.github.io/netyar-cafenet-panel/sitemap.xml

@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: آزمون و ممیزی
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+
+    steps:
+      - name: دریافت کد
+        uses: actions/checkout@v4
+
+      - name: راه‌اندازی Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: بازسازی دیتاست
+        run: node data/build.js
+
+      - name: ممیزی کیفیت دیتاست
+        run: node tools/audit.mjs
+
+      - name: آزمون‌های سرتاسری (۲۴ آزمون)
+        run: node tools/test.mjs
+
+      - name: بازبینی ساختار پروژه
+        run: |
+          echo "رکوردها: $(node -pe "require('./data/sites.json').sites.length")"
+          echo "دسته‌ها: $(node -pe "require('./data/sites.json').categories.length")"
+          echo "گروه‌ها: $(node -pe "require('./data/sites.json').groups.length")"
+          node --check server/index.js
+          node --check public/js/app.js
+
+      - name: بارگذاری گزارش‌ها
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports-node${{ matrix.node }}
+          path: |
+            data/audit.json
+            data/test-report.json
+            data/report.json
+          retention-days: 14

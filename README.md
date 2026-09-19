@@ -1,5 +1,11 @@
 # کافی نت نت یار — NetYar Internet Cafe
 
+![Node](https://img.shields.io/badge/Node.js-%E2%89%A518.17-3c873a)
+![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
+![Sites](https://img.shields.io/badge/sites-688-0a84d6)
+![License](https://img.shields.io/badge/license-UNLICENSED-lightgrey)
+
+
 پنل حرفه‌ای و سریع دسترسی به **سامانه‌ها و خدمات دیجیتال ایران**؛ مجموعه‌ای از
 سامانه‌های دولتی، بانکی، قضایی، آموزشی، بیمه، مالیاتی، درمانی، حمل‌ونقل، شهرداری و
 کسب‌وکار در یک رابط کاربری مدرن، دوزبانه (فارسی/لاتین) و راست‌به‌چپ.
@@ -27,6 +33,16 @@
 | **نصب‌پذیری** | PWA کامل: مانیفست RTL، آیکون‌های ۱۹۲/۵۱۲/maskable، Service Worker برای بارگذاری فوری |
 | **کارایی** | gzip، ETag، رندر صفحه‌ای با `IntersectionObserver` (بدون کندی برای ۶۸۸ رکورد)، lazy-load لوگوها، Service Worker |
 | **دسترس‌پذیری** | ARIA، skip-link، پیمایش با کیبورد، `Ctrl+K`، `Esc`، `prefers-reduced-motion` |
+
+---
+
+## ۱٫۵) دریافت از گیت‌هاب
+
+```bash
+git clone https://github.com/amiroo4522855-wq/netyar-cafenet-panel.git
+cd netyar-cafenet-panel
+npm start          # بدون نیاز به npm install — هیچ وابستگی ندارد
+```
 
 ---
 
@@ -80,6 +96,7 @@ npm test            # ۲۴ آزمون خودکار (احراز هویت، API، 
 netyar/
 ├── package.json                 اسکریپت‌ها (بدون وابستگی)
 ├── README.md
+├── docs/github-actions-ci.yml   گردش‌کار آماده CI (برای فعال‌سازی به .github/workflows منتقل شود)
 ├── server/
 │   ├── index.js                 سرور HTTP، روترها، هدرهای امنیتی، فایل استاتیک + gzip
 │   ├── http.js                  روتر، خواندن بدنه، اعتبارسنجی ورودی (V.*)
@@ -310,6 +327,24 @@ npm run audit   # ممیزی دیتاست: ۰ مشکل
 عدم سرو فایل‌های بیرون از `public`، CRUD محبوب‌ها/اخیرها/ترجیحات، رد شدن ورودی
 نامعتبر، CRUD کامل پنل مدیریت، خروج، یکپارچگی دیتاست (فیلد خالی، دامنه تکراری،
 نشانی بدساخت، لوگوی مفقود)، صحت تبدیل تاریخ جلالی، gzip و Rate Limiting.
+
+---
+
+## ۹٫۵) فعال‌سازی گردش‌کار CI (اختیاری)
+
+فایل آماده در `docs/github-actions-ci.yml` قرار دارد (بازسازی دیتاست + ممیزی +
+۲۴ آزمون روی Node ۲۰ و ۲۲ در هر push و pull request). برای فعال‌سازی:
+
+```bash
+mkdir -p .github/workflows
+cp docs/github-actions-ci.yml .github/workflows/ci.yml
+git add .github && git commit -m "ci: فعال‌سازی گردش‌کار آزمون" && git push
+```
+
+> انتقال این فایل با `gh auth login` معمولی ممکن نیست؛ گیت‌هاب برای ساخت یا ویرایش
+> `.github/workflows/**` دامنه `workflow` می‌خواهد. یا با
+> `gh auth login --scopes workflow` دوباره وارد شوید، یا از PAT با مجوز
+> **Workflows: Read/Write** استفاده کنید، یا فایل را از وب‌اپ گیت‌هاب بسازید.
 
 ---
 

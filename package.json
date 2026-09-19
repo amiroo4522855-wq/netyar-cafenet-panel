@@ -17,7 +17,8 @@
     "discover": "node tools/discover-ct.mjs",
     "icons": "node tools/icons-fast.mjs",
     "audit": "node tools/audit.mjs",
-    "test": "node tools/test.mjs"
+    "test": "node tools/test.mjs",
+    "pages": "node tools/pages.cjs"
   },
   "dependencies": {},
   "devDependencies": {},

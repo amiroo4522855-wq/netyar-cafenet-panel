@@ -1,10 +1,12 @@
 # کافی نت نت یار — NetYar Internet Cafe
 
+**صفحه عمومی (زنده):** <https://amiroo4522855-wq.github.io/netyar-cafenet-panel/>
+**مخزن:** <https://github.com/amiroo4522855-wq/netyar-cafenet-panel>
+
 ![Node](https://img.shields.io/badge/Node.js-%E2%89%A518.17-3c873a)
 ![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 ![Sites](https://img.shields.io/badge/sites-688-0a84d6)
 ![License](https://img.shields.io/badge/license-UNLICENSED-lightgrey)
-
 
 پنل حرفه‌ای و سریع دسترسی به **سامانه‌ها و خدمات دیجیتال ایران**؛ مجموعه‌ای از
 سامانه‌های دولتی، بانکی، قضایی، آموزشی، بیمه، مالیاتی، درمانی، حمل‌ونقل، شهرداری و
@@ -98,7 +100,10 @@ npm test            # ۲۵ آزمون خودکار (احراز هویت، API، 
 netyar/
 ├── package.json                 اسکریپت‌ها (بدون وابستگی)
 ├── README.md
-├── docs/github-actions-ci.yml   گردش‌کار آماده CI (برای فعال‌سازی به .github/workflows منتقل شود)
+├── render.yaml                  Blueprint آماده برای Render
+├── Dockerfile                   ایمیج سبک غیر-root
+├── Procfile
+├── .dockerignore
 ├── server/
 │   ├── index.js                 سرور HTTP، روترها، هدرهای امنیتی، فایل استاتیک + gzip
 │   ├── http.js                  روتر، خواندن بدنه، اعتبارسنجی ورودی (V.*)
@@ -120,12 +125,12 @@ netyar/
 │   └── userdata.json            محبوب‌ها/اخیرها/ترجیحات کاربران (زمان اجرا)
 ├── docs/
 │   ├── deploy.md                راهنمای دیپلوی (Render/Docker/VPS) + دیده شدن در گوگل
-│   └── github-actions-ci.yml    گردش‌کار آماده CI
-├── render.yaml                  Blueprint آماده برای Render
-├── Dockerfile                   ایمیج سبک غیر-root
-├── Procfile
+│   ├── index.html               ★ صفحه معرفی عمومی (GitHub Pages) — تولید خودکار
+│   ├── robots.txt, sitemap.xml  نسخه مخصوص سایت Pages
+│   └── github-actions-ci.yml    گردش‌کار آماده CI (انتقال به .github/workflows)
 ├── tools/
 │   ├── seo.cjs                  تولید لایه عمومی قابل ایندکس (/c/, robots, sitemap)
+│   ├── pages.cjs                تولید صفحه معرفی عمومی GitHub Pages
 │   ├── discover-ct.mjs          کشف دامنه از Certificate Transparency
 │   ├── verify.mjs               اعتبارسنجی سه‌لایه + دریافت لوگو
 │   ├── icons-fast.mjs           گذر سریع و محدود برای لوگوها

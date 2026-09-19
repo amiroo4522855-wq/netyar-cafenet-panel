@@ -1,0 +1,17 @@
+# --- اسناد حساس (هرگز commit نشوند) ---
+server/.credentials.json
+server/.secret.key
+.env
+
+# --- داده‌های زمان اجرا ---
+data/userdata.json
+data/admin-overrides.json
+
+# --- وابستگی‌ها و خروجی‌ها ---
+node_modules/
+npm-debug.log*
+.DS_Store
+*.tmp
+
+# نکته: data/verify.json و data/ct-discovery.json عمداً ignore نشده‌اند؛
+# این دو «سند اعتبارسنجی» دامنه‌ها هستند و برای بازتولید گزارش ممیزی لازم‌اند.

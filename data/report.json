@@ -1,0 +1,422 @@
+{
+  "generatedAt": "2026-09-19T13:12:39.665Z",
+  "totalCandidates": 785,
+  "totalEnrich": 152,
+  "iauBranchesAdded": 219,
+  "included": 688,
+  "withRealLogo": 317,
+  "withMonogramFallback": 371,
+  "httpsConfirmed": 321,
+  "ctConfirmed": 10,
+  "featured": 107,
+  "byCategory": [
+    {
+      "category": "دولت و خدمات دولتی",
+      "count": 9
+    },
+    {
+      "category": "سازمان ثبت احوال",
+      "count": 3
+    },
+    {
+      "category": "ثبت اسناد و املاک",
+      "count": 5
+    },
+    {
+      "category": "قوه قضائیه",
+      "count": 1
+    },
+    {
+      "category": "سامانه‌های قضایی",
+      "count": 15
+    },
+    {
+      "category": "راهنمایی و رانندگی",
+      "count": 4
+    },
+    {
+      "category": "بانک‌ها",
+      "count": 30
+    },
+    {
+      "category": "پرداخت و خدمات بانکی",
+      "count": 31
+    },
+    {
+      "category": "مالیات",
+      "count": 3
+    },
+    {
+      "category": "تأمین اجتماعی",
+      "count": 3
+    },
+    {
+      "category": "بیمه",
+      "count": 8
+    },
+    {
+      "category": "بیمه سلامت",
+      "count": 7
+    },
+    {
+      "category": "وزارت کار",
+      "count": 3
+    },
+    {
+      "category": "آموزش و پرورش",
+      "count": 9
+    },
+    {
+      "category": "وزارت علوم",
+      "count": 1
+    },
+    {
+      "category": "سنجش و آزمون",
+      "count": 4
+    },
+    {
+      "category": "دانشگاه‌ها",
+      "count": 283
+    },
+    {
+      "category": "سلامت و درمان",
+      "count": 12
+    },
+    {
+      "category": "وزارت بهداشت",
+      "count": 2
+    },
+    {
+      "category": "کشاورزی",
+      "count": 4
+    },
+    {
+      "category": "مسکن",
+      "count": 4
+    },
+    {
+      "category": "راه و شهرسازی",
+      "count": 4
+    },
+    {
+      "category": "شهرداری",
+      "count": 47
+    },
+    {
+      "category": "حمل‌ونقل",
+      "count": 26
+    },
+    {
+      "category": "خودرو",
+      "count": 6
+    },
+    {
+      "category": "گمرک",
+      "count": 1
+    },
+    {
+      "category": "تجارت",
+      "count": 11
+    },
+    {
+      "category": "کسب‌وکار",
+      "count": 42
+    },
+    {
+      "category": "بورس و بازار سرمایه",
+      "count": 19
+    },
+    {
+      "category": "خدمات مالی",
+      "count": 17
+    },
+    {
+      "category": "انرژی و نفت",
+      "count": 6
+    },
+    {
+      "category": "آب و برق",
+      "count": 2
+    },
+    {
+      "category": "مخابرات",
+      "count": 1
+    },
+    {
+      "category": "پست و لجستیک",
+      "count": 7
+    },
+    {
+      "category": "خدمات اینترنت",
+      "count": 14
+    },
+    {
+      "category": "کاریابی و استخدام",
+      "count": 5
+    },
+    {
+      "category": "رسانه و خبر",
+      "count": 31
+    },
+    {
+      "category": "خدمات عمومی",
+      "count": 8
+    }
+  ],
+  "rejectedDomains": [
+    "7learn.ir",
+    "abfa-tehran.com",
+    "abfa-tehran.ir",
+    "abfa.gov.ir",
+    "abfa.ir",
+    "abfamashhad.com",
+    "adliran.gov.ir",
+    "agrijihad.gov.ir",
+    "agrijihad.ir",
+    "airnow.ir",
+    "alibabatejarat.ir",
+    "alighapu.ir",
+    "ap.co.ir",
+    "ardabil.ir",
+    "arman-insurance.com",
+    "arvancloud.com",
+    "azinqard.com",
+    "baamapp.ir",
+    "badrnet.ir",
+    "bale-ai.ir",
+    "balepay.ir",
+    "bank-keshavarzi.ir",
+    "bankri.ir",
+    "banksaderatiran.com",
+    "bhrc.gov.ir",
+    "bilit199.com",
+    "bim.org.ir",
+    "bimbi.ir",
+    "bimedana.ir",
+    "bimeh-bazar.com",
+    "bimeh-markazi.ir",
+    "bimeh-salamat.ir",
+    "bimehasia.co.ir",
+    "bimehmarkazi.ir",
+    "bimehmosafer.ir",
+    "bimehsalamatiran.ir",
+    "bimehtajari-novin.com",
+    "bimemellat.ir",
+    "bimeparsian.ir",
+    "bimesaman.com",
+    "bksh.com",
+    "bksh.ir",
+    "boroujerd.ir",
+    "bourseagah.com",
+    "boursekalar.ir",
+    "bpm.gov.ir",
+    "bpm.ir",
+    "caspienairlines.ir",
+    "centinsur.gov.ir",
+    "chap.ir",
+    "dadepardaz.com",
+    "dadgostari-tehran.ir",
+    "dadiran.ir",
+    "damiparvar.com",
+    "damiparvar.ir",
+    "daneshjooyar.ir",
+    "darmankala.ir",
+    "daroo.app",
+    "daruino.ir",
+    "digikala-mag.com",
+    "digikala-mag.ir",
+    "doniya-e-eqtesad.com",
+    "e-estekhdam.ir",
+    "eghadam.com",
+    "emofid.ir",
+    "epl.irica.gov.ir",
+    "epl.irica.ir",
+    "epolice.gov.ir",
+    "esetadiran.com",
+    "esetadiran.ir",
+    "fandogh.cloud",
+    "fani.mcls.gov.ir",
+    "farsnews.com",
+    "fasa.ir",
+    "fdi.gov.ir",
+    "fdifood.ir",
+    "flypersia.ir",
+    "g4b.gov.ir",
+    "gapsarv.ir",
+    "ghateh.com",
+    "hrmosaic.com",
+    "ifara.ir",
+    "ifda.gov.ir",
+    "ifro.gov.ir",
+    "ifro.ir",
+    "igmc.gov.ir",
+    "ihio.ir",
+    "ikaap.ir",
+    "imna.news",
+    "ina.gov.ir",
+    "inhabitat.ir",
+    "intamedia.tax.gov.ir",
+    "internet.ir",
+    "invoice.tax.gov.ir",
+    "irairtour.ir",
+    "iranairports.ir",
+    "iranbilet.ir",
+    "irancell.com",
+    "iranco.gov.ir",
+    "iranco.ir",
+    "irandesert.com",
+    "irandns.ir",
+    "irandoe.ir",
+    "iranfara.ir",
+    "iranianasnaf.gov.ir",
+    "iranprkar.ir",
+    "irib.news",
+    "irica.gov.ir",
+    "irica.ir",
+    "iricacard.com",
+    "iricacard.ir",
+    "irimo.gov.ir",
+    "irishome.ir",
+    "irna.news",
+    "isc.ir",
+    "isfahanu.ac.ir",
+    "ivo.gov.ir",
+    "javanan.mcls.gov.ir",
+    "judiciary.ir",
+    "kalatik.ir",
+    "karafarininsurance.com",
+    "karaneh.travel",
+    "karbaf.ir",
+    "karbama.ir",
+    "kargozariagah.ir",
+    "karpino.ir",
+    "kharid-24.ir",
+    "kharid24.ir",
+    "khodro118.ir",
+    "kishair.ir",
+    "mabna-ir.ir",
+    "mahabad.ir",
+    "maja.gov.ir",
+    "maskan-mehr.ir",
+    "maskanmehr.ir",
+    "mci.gov.ir",
+    "mct.gov.ir",
+    "mehrabad-airport.ir",
+    "merajair.com",
+    "miandoab.ir",
+    "mimt.ir",
+    "mizbanfa.com",
+    "mobinnet.com",
+    "mod.gov.ir",
+    "modiranvehicle.com",
+    "moe.ir",
+    "moe.org.ir",
+    "moshavereto.ir",
+    "mpn.gov.ir",
+    "mporg.gov.ir",
+    "mrud.gov.ir",
+    "naftair.ir",
+    "nahzatmaskan.ir",
+    "netbox.ir",
+    "nic.gov.ir",
+    "nigc.gov.ir",
+    "nioc.gov.ir",
+    "nld.gov.ir",
+    "nld.ir",
+    "novinbourse.com",
+    "nrm.ir",
+    "ntsw.gov.ir",
+    "nwsiportal.com",
+    "nwsiportal.ir",
+    "omidian-insurance.com",
+    "pars-online.ir",
+    "paya24.ir",
+    "pishkhan.gov.ir",
+    "plate.ir",
+    "ports.ir",
+    "post.gov.ir",
+    "postaar.ir",
+    "prkar.ir",
+    "qeshmair.com",
+    "qoveqazaiyeh.ir",
+    "rahabar.ir",
+    "rahvar120.gov.ir",
+    "refahi.ir",
+    "rehoon.ir",
+    "rightel.com",
+    "roibobo.ir",
+    "roocket.net",
+    "rubika.app",
+    "saat24.com",
+    "saat24.ir",
+    "sabadkharid.ir",
+    "sabt.gov.ir",
+    "sabta.gov.ir",
+    "sadf.gov.ir",
+    "sadf.ir",
+    "sahamkhodro.ir",
+    "sahamyabi.ir",
+    "sakha.ir",
+    "salamat-electronik.ir",
+    "salamedad.ir",
+    "salavat.salamat.gov.ir",
+    "samanbank.ir",
+    "samandehi.gov.ir",
+    "samankargosha.ir",
+    "sana.gov.ir",
+    "sanarate.ir",
+    "sapco.ir",
+    "sarmayehinsurance.ir",
+    "sazman-estekhdam.ir",
+    "sepehranair.ir",
+    "shabestan.travel",
+    "shahrdari-esfahan.ir",
+    "shahriar.ir",
+    "shahroud.ir",
+    "shana.gov.ir",
+    "shaparaknet.ir",
+    "sheypur.com",
+    "shoghlbank.ir",
+    "shora-e-ali.ir",
+    "snaappay.ir",
+    "snappdoctor.ir",
+    "snappmarket.com",
+    "sokan.academy",
+    "sonarhost.ir",
+    "soroush.plus",
+    "sotoodeh24.com",
+    "srttu.edu",
+    "tadbirsaba.ir",
+    "tamin365.ir",
+    "taraapp.ir",
+    "tasnimnews.com",
+    "tavanir.ir",
+    "tazavon.ir",
+    "tci.gov.ir",
+    "tehran.dadgostari.ir",
+    "tehran137.ir",
+    "tehranmaskan.ir",
+    "tehranmetro.ir",
+    "tehransmartcity.ir",
+    "telewebion.com",
+    "thadiran.ir",
+    "toplearn.ir",
+    "tosee-coop.ir",
+    "toseetaavonbank.ir",
+    "tpp.gov.ir",
+    "tpww.gov.ir",
+    "tpx.tax.gov.ir",
+    "tsc.ir",
+    "tsc.irica.gov.ir",
+    "ttac.gov.ir",
+    "tvto.ir",
+    "twwtp.gov.ir",
+    "twwtp.ir",
+    "vamito.ir",
+    "varamin.ir",
+    "vicepresident.ir",
+    "yasouj.ir"
+  ],
+  "duplicatesRemoved": 1,
+  "prunedIcons": 0
+}

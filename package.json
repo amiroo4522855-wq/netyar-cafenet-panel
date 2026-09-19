@@ -1,0 +1,24 @@
+{
+  "name": "netyar-internet-cafe",
+  "version": "1.0.0",
+  "private": true,
+  "description": "کافی نت نت یار — پنل دسترسی سریع به سامانه‌ها و خدمات دیجیتال ایران (NetYar Internet Cafe)",
+  "type": "commonjs",
+  "main": "server/index.js",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "build:data": "node data/build.js",
+    "verify": "node tools/verify.mjs",
+    "discover": "node tools/discover-ct.mjs",
+    "icons": "node tools/icons-fast.mjs",
+    "audit": "node tools/audit.mjs",
+    "test": "node tools/test.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "UNLICENSED"
+}

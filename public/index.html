@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="کافی نت نت یار — پنل دسترسی سریع به سامانه‌ها و خدمات دیجیتال ایران">
+<meta name="theme-color" content="#08090c">
+<meta name="color-scheme" content="dark light">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="نت یار">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="msapplication-TileColor" content="#08090c">
+<title>کافی نت نت یار | NetYar Internet Cafe</title>
+<link rel="preload" href="/fonts/Vazirmatn-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/app.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/pwa/icon-180.png">
+<link rel="manifest" href="/manifest.webmanifest">
+</head>
+<body>
+<a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+
+<div id="app" class="app" hidden>
+  <div id="toasts" class="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <!-- ===================== Sidebar ===================== -->
+  <aside class="sidebar" id="sidebar" aria-label="ناوبری اصلی">
+    <div class="sidebar__head">
+      <a class="brand" href="#/dashboard" data-nav="dashboard" aria-label="کافی نت نت یار">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" width="22" height="22">
+            <path d="M6 24.5V9.2A3.2 3.2 0 0 1 9.2 6h3.3" stroke="url(#bg1)" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M6 24.5h7.6c6.4 0 11.6-5.2 11.6-11.6V6" stroke="url(#bg2)" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="25.4" cy="25" r="3" fill="url(#bg2)"/>
+            <defs>
+              <linearGradient id="bg1" x1="6" y1="6" x2="14" y2="25" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7fe3d0"/><stop offset="1" stop-color="#39c9b0"/>
+              </linearGradient>
+              <linearGradient id="bg2" x1="13" y1="6" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#8fd4ff"/><stop offset="1" stop-color="#4aa8f0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <span class="brand__fa">کافی نت نت یار</span>
+          <span class="brand__en">NetYar Internet Cafe</span>
+        </span>
+      </a>
+      <button class="icon-btn sidebar__close" id="sidebarClose" aria-label="بستن منو"></button>
+    </div>
+
+    <nav class="nav" id="nav"></nav>
+
+    <div class="sidebar__section">
+      <div class="sidebar__label">دسته‌بندی‌ها</div>
+      <div class="cat-list" id="catList"></div>
+    </div>
+
+    <div class="sidebar__foot">
+      <div class="syscard" id="sysCard">
+        <div class="syscard__row">
+          <span class="dot dot--ok" id="sysDot"></span>
+          <span class="syscard__title">وضعیت سیستم</span>
+        </div>
+        <div class="syscard__meta" id="sysMeta">در حال بررسی…</div>
+      </div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <!-- ===================== Main ===================== -->
+  <div class="main">
+    <header class="header">
+      <button class="icon-btn header__menu" id="menuBtn" aria-label="باز کردن منو" aria-expanded="false"></button>
+
+      <div class="search" id="searchWrap">
+        <span class="search__icon" id="searchIcon"></span>
+        <input id="search" class="search__input" type="search" autocomplete="off" spellcheck="false"
+               placeholder="جستجو در نام سایت، سازمان، سامانه، دسته یا دامنه…"
+               aria-label="جستجوی سایت‌ها" aria-describedby="searchHint">
+        <kbd class="search__kbd" id="searchKbd">Ctrl K</kbd>
+        <button class="search__clear" id="searchClear" hidden aria-label="پاک کردن جستجو"></button>
+        <div class="suggest" id="suggest" hidden role="listbox" aria-label="پیشنهاد جستجو"></div>
+      </div>
+
+      <div class="header__actions">
+        <span class="netbadge" id="netBadge" hidden></span>
+        <button class="icon-btn" id="themeBtn" aria-label="تغییر پوسته روشن/تاریک" title="پوسته"></button>
+        <button class="icon-btn" id="toolsBtn" aria-label="ابزارهای کاربردی" title="ابزارها"></button>
+        <div class="profile" id="profileBtn" tabindex="0" role="button" aria-haspopup="menu" aria-expanded="false">
+          <span class="profile__avatar" id="profileAvatar"></span>
+          <span class="profile__name">اپراتور</span>
+          <span class="profile__chev" id="profileChev"></span>
+        </div>
+        <div class="menu-pop" id="profileMenu" role="menu" hidden></div>
+      </div>
+    </header>
+
+    <main class="content" id="main" tabindex="-1">
+      <div class="view" id="view"></div>
+
+      <footer class="footer">
+        <div class="footer__inner">
+          <div class="footer__brand">
+            <span class="footer__logo" id="footerLogo"></span>
+            <div>
+              <div class="footer__name">کافی نت نت یار</div>
+              <div class="footer__tag">مرکز دسترسی سریع به خدمات دیجیتال</div>
+            </div>
+          </div>
+          <div class="footer__meta">
+            <span id="footerCount">—</span>
+            <span class="sep"></span>
+            <span>© <span dir="ltr">NetYar</span></span>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- ===================== Login ===================== -->
+<div id="auth" class="auth" hidden>
+  <div class="auth__bg" aria-hidden="true">
+    <div class="auth__grid"></div>
+    <div class="auth__glow auth__glow--a"></div>
+    <div class="auth__glow auth__glow--b"></div>
+  </div>
+
+  <div class="auth__card">
+    <div class="auth__logo" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" width="42" height="42">
+        <path d="M9 37V14a4.8 4.8 0 0 1 4.8-4.8H19" stroke="url(#lg1)" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M9 37h11.6C30.2 37 38 29.2 38 19.6V9" stroke="url(#lg2)" stroke-width="3.6" stroke-linecap="round"/>
+        <circle cx="38.4" cy="37.6" r="4.2" fill="url(#lg2)"/>
+        <defs>
+          <linearGradient id="lg1" x1="9" y1="9" x2="20" y2="37" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7fe3d0"/><stop offset="1" stop-color="#2fbfa6"/>
+          </linearGradient>
+          <linearGradient id="lg2" x1="19" y1="9" x2="39" y2="39" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8fd4ff"/><stop offset="1" stop-color="#3f9ae8"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <h1 class="auth__title">کافی نت نت یار</h1>
+    <p class="auth__sub">NetYar Internet Cafe — پنل دسترسی سریع به خدمات دیجیتال</p>
+
+    <form id="loginForm" class="auth__form" novalidate>
+      <label class="field">
+        <span class="field__label">رمز ورود</span>
+        <span class="field__box">
+          <span class="field__icon" id="lockIcon"></span>
+          <input id="accessCode" class="field__input" type="password" inputmode="numeric"
+                 autocomplete="current-password" maxlength="32" placeholder="••••"
+                 aria-describedby="authMsg" required>
+          <button type="button" class="field__eye" id="eyeBtn" aria-label="نمایش رمز"></button>
+        </span>
+      </label>
+      <div class="auth__msg" id="authMsg" role="alert" aria-live="assertive"></div>
+      <button type="submit" class="btn btn--primary btn--lg auth__submit" id="loginBtn">
+        <span class="btn__label">ورود به پنل</span>
+        <span class="btn__spinner" hidden></span>
+      </button>
+    </form>
+
+    <div class="auth__foot">
+      <span class="auth__shield" id="authShield"></span>
+      <span>اتصال امن · احراز هویت سمت سرور</span>
+    </div>
+  </div>
+</div>
+
+<div id="modalRoot"></div>
+<div id="boot" class="boot">
+  <div class="boot__inner">
+    <div class="boot__ring"></div>
+    <div class="boot__text">در حال آماده‌سازی پنل…</div>
+  </div>
+</div>
+
+<script src="/js/icons.js" defer></script>
+<script src="/js/api.js" defer></script>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# کافی نت نت یار — Blueprint قابل دیپلوی روی Render
+# در Render: New + → Blueprint → انتخاب این مخزن → Apply
+services:
+  - type: web
+    name: netyar
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: node data/build.js
+    startCommand: node server/index.js
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.14.0
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      # ⚠ حتماً در داشبورد Render مقدار واقعی بگذارید (رمز ورود پنل)
+      - key: NETYAR_ACCESS_CODE
+        sync: false
+      # ⚠ یک رشته تصادفی بلند بگذارید تا نشست‌ها پس از هر دیپلوی باطل نشوند
+      - key: NETYAR_SESSION_SECRET
+        sync: false
+      # ⚠ برای فعال شدن پنل مدیریت (اختیاری)
+      - key: NETYAR_ADMIN_KEY
+        sync: false
+      # ⚠ پس از دیپلوی، آدرس عمومی سرویس را بگذارید؛ مثلا https://netyar.onrender.com
+      #    سپس buildCommand را یک بار دیگر اجرا کنید تا canonical و sitemap با آدرس واقعی ساخته شوند
+      - key: NETYAR_SITE_URL
+        sync: false

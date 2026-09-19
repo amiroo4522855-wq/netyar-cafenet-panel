@@ -85,7 +85,8 @@ npm run verify      # اعتبارسنجی DNS + CT + favicon و دریافت ل
 npm run icons       # گذر سریع تکمیلی برای لوگوها
 npm run build:data  # تولید data/sites.json از داده‌های کیوریت‌شده + نتایج اعتبارسنجی
 npm run audit       # ممیزی کیفیت دیتاست (تکراری، فیلد خالی، لوگوی مفقود، …)
-npm test            # ۲۴ آزمون خودکار (احراز هویت، API، امنیت، دیتاست)
+npm run seo         # تولید صفحات عمومی SEO + robots.txt + sitemap.xml
+npm test            # ۲۵ آزمون خودکار (احراز هویت، API، امنیت، دیتاست، SEO)
 ```
 
 ---
@@ -116,7 +117,14 @@ netyar/
 │   ├── report.json              گزارش ساخت
 │   ├── audit.json               گزارش ممیزی
 │   └── userdata.json            محبوب‌ها/اخیرها/ترجیحات کاربران (زمان اجرا)
+├── docs/
+│   ├── deploy.md                راهنمای دیپلوی (Render/Docker/VPS) + دیده شدن در گوگل
+│   └── github-actions-ci.yml    گردش‌کار آماده CI
+├── render.yaml                  Blueprint آماده برای Render
+├── Dockerfile                   ایمیج سبک غیر-root
+├── Procfile
 ├── tools/
+│   ├── seo.cjs                  تولید لایه عمومی قابل ایندکس (/c/, robots, sitemap)
 │   ├── discover-ct.mjs          کشف دامنه از Certificate Transparency
 │   ├── verify.mjs               اعتبارسنجی سه‌لایه + دریافت لوگو
 │   ├── icons-fast.mjs           گذر سریع و محدود برای لوگوها
@@ -125,6 +133,9 @@ netyar/
 │   └── test.mjs                 آزمون خودکار سرتاسری
 └── public/
     ├── index.html               پوسته تک‌صفحه‌ای (ورود + اپ)
+    ├── c/                       ★ ۴۰ صفحه عمومی SEO (فهرست دسته‌ها + هر دسته + درباره)
+    ├── robots.txt               تولیدشده: اجازه /c/، مسدود /api/
+    ├── sitemap.xml              تولیدشده: ۴۱ نشانی عمومی
     ├── manifest.webmanifest     مانیفست PWA (rtl، فارسی، ۵ آیکون)
     ├── sw.js                    Service Worker (کش پوسته + آفلاین)
     ├── favicon.svg              لوگوی اختصاصی NetYar
@@ -302,6 +313,23 @@ curl -X POST http://localhost:3000/api/admin/sites \
 
 ---
 
+## ۷٫۵) دیپلوی و SEO
+
+لایه عمومی قابل ایندکس در `/c/` ساخته می‌شود: صفحه فهرست دسته‌ها، یک صفحه برای هر
+دسته با همه سامانه‌ها، و صفحه درباره — همگی **بدون نیاز به رمز**، کاملاً سمت سرور
+رندرشده، با `canonical`، Open Graph و داده ساختاریافته JSON-LD. به‌همراه
+`robots.txt` و `sitemap.xml` خودکار. داشبورد همچنان پشت رمز می‌ماند.
+
+```bash
+NETYAR_SITE_URL='https://دامنه-شما' npm run seo     # بازتولید با آدرس واقعی
+```
+
+راهنمای کامل دیپلوی روی Render/Docker/VPS، متغیرهای محیطی لازم، ثبت در
+Google Search Console و انتظارات واقعی از ایندکس شدن:
+**[`docs/deploy.md`](docs/deploy.md)**
+
+---
+
 ## ۸) معماری آماده برای توسعه
 
 * **لایه داده جدا** — همه دسترسی‌ها از `server/store.js` عبور می‌کنند؛ برای مهاجرت
@@ -318,15 +346,15 @@ curl -X POST http://localhost:3000/api/admin/sites \
 ## ۹) تست و ممیزی
 
 ```bash
-npm test        # ۲۴ آزمون: همه سبز
+npm test        # ۲۵ آزمون: همه سبز
 npm run audit   # ممیزی دیتاست: ۰ مشکل
 ```
 
-آزمون‌ها این موارد را پوشش می‌دهند: ورود با رمز درست/غلط، HttpOnly بودن کوکی،
+آزمون‌ها این موارد را پوشش می‌دهند (۲۵ مورد): ورود با رمز درست/غلط، HttpOnly بودن کوکی،
 قفل بودن کاتالوگ بدون ورود، عدم نشت رمز در فایل‌های فرانت‌اند، هدرهای امنیتی،
 عدم سرو فایل‌های بیرون از `public`، CRUD محبوب‌ها/اخیرها/ترجیحات، رد شدن ورودی
 نامعتبر، CRUD کامل پنل مدیریت، خروج، یکپارچگی دیتاست (فیلد خالی، دامنه تکراری،
-نشانی بدساخت، لوگوی مفقود)، صحت تبدیل تاریخ جلالی، gzip و Rate Limiting.
+نشانی بدساخت، لوگوی مفقود)، صحت تبدیل تاریخ جلالی، gzip، Rate Limiting و صحت لایه SEO (robots/sitemap/canonical/JSON-LD و نبودِ noindex).
 
 ---
 

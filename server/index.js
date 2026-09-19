@@ -357,8 +357,8 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405); return res.end(); }
 
-  // فایل استاتیک
-  const rel = pathname === '/' ? '/index.html' : pathname;
+  // فایل استاتیک (مسیرهای ختم‌شده به / به index.html همان پوشه نگاشت می‌شوند)
+  const rel = pathname.endsWith('/') ? `${pathname}index.html` : pathname;
   const filePath = path.join(PUBLIC_DIR, rel);
   if (filePath.startsWith(PUBLIC_DIR)) {
     const immutable = /^\/(icons|fonts|css|js)\//.test(rel);

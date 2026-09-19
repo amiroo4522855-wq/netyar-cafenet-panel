@@ -12,6 +12,7 @@
     "start": "node server/index.js",
     "dev": "node --watch server/index.js",
     "build:data": "node data/build.js",
+    "seo": "node tools/seo.cjs",
     "verify": "node tools/verify.mjs",
     "discover": "node tools/discover-ct.mjs",
     "icons": "node tools/icons-fast.mjs",

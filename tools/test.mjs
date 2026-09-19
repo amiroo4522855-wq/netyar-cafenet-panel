@@ -279,6 +279,36 @@ await test('استاتیک: فایل‌های اصلی سرو می‌شوند', 
   }
 });
 
+await test('SEO: صفحات عمومی، robots.txt و sitemap.xml سرو می‌شوند', async () => {
+  for (const f of ['/robots.txt', '/sitemap.xml', '/c/', '/c/about.html', '/c/bank.html', '/c/gov.html']) {
+    const r = await fetch(BASE + f);
+    assert.equal(r.status, 200, `${f} -> ${r.status}`);
+  }
+  const robots = await (await fetch(BASE + '/robots.txt')).text();
+  assert.ok(robots.includes('Sitemap:'), 'robots.txt باید آدرس sitemap داشته باشد');
+  assert.ok(robots.includes('Disallow: /api/'), 'robots.txt باید API را مسدود کند');
+
+  const list = await (await fetch(BASE + '/c/')).text();
+  assert.ok(list.includes('rel="canonical"'), '/c/ باید صفحه فهرست باشد نه SPA');
+  assert.ok(list.includes('فهرست سامانه‌ها'), '/c/ باید عنوان فهرست سامانه‌ها را داشته باشد');
+  assert.ok((list.match(/href="\/c\/[a-z]+\.html"/g) || []).length >= 30, '/c/ باید به همه دسته‌ها لینک بدهد');
+
+  const cat = await (await fetch(BASE + '/c/bank.html')).text();
+  assert.ok(!/noindex/.test(cat), 'صفحات عمومی نباید noindex باشند');
+  assert.ok(cat.includes('rel="canonical"'), 'canonical لازم است');
+  assert.ok(cat.includes('application/ld+json'), 'داده ساختاریافته لازم است');
+  assert.ok(!/5581/.test(cat), 'رمز نباید در صفحات عمومی باشد');
+
+  const home = await (await fetch(BASE + '/')).text();
+  assert.ok(!/noindex/.test(home), 'صفحه اصلی نباید noindex باشد');
+  assert.ok(home.includes('og:title'), 'Open Graph لازم است');
+
+  const sm = await (await fetch(BASE + '/sitemap.xml')).text();
+  const urls = (sm.match(/<loc>/g) || []).length;
+  assert.ok(urls >= 40, `sitemap باید دست‌کم ۴۰ نشانی داشته باشد (دارد: ${urls})`);
+  assert.ok(!sm.includes('/api/'), 'sitemap نباید مسیر API داشته باشد');
+});
+
 await test('فشرده‌سازی gzip برای کاتالوگ فعال است', async () => {
   const r = await fetch(BASE + '/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ accessCode: ACCESS_CODE }) });
   const r2 = await fetch(BASE + '/api/catalog', { headers: { Cookie: r.headers.get('set-cookie').split(';')[0], 'Accept-Encoding': 'gzip' } });

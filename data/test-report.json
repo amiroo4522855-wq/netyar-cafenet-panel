@@ -1,5 +1,5 @@
 {
-  "passed": 24,
+  "passed": 25,
   "failed": 0,
   "results": [
     [
@@ -89,6 +89,10 @@
     [
       "PASS",
       "استاتیک: فایل‌های اصلی سرو می‌شوند"
+    ],
+    [
+      "PASS",
+      "SEO: صفحات عمومی، robots.txt و sitemap.xml سرو می‌شوند"
     ],
     [
       "PASS",

@@ -414,6 +414,15 @@ function build() {
   console.log(`HTTPS تأییدشده: ${report.httpsConfirmed} | CT تأییدشده: ${report.ctConfirmed}`);
   console.log(`واحد دانشگاه آزاد افزوده شد: ${iauCount}`);
   console.log(`دامنه‌های ردشده (بدون DNS و بدون گواهی): ${report.rejectedDomains.length}`);
+  /* تولید لایه عمومی SEO (صفحات /c/, robots.txt, sitemap.xml) */
+  try {
+    const seo = require('../tools/seo.cjs');
+    const r = seo.generate();
+    console.log(`SEO: ${r.pages} صفحه عمومی + robots.txt + sitemap.xml (پایه: ${r.base})`);
+  } catch (e) {
+    console.warn('هشدار: تولید صفحات SEO ناموفق بود ->', e.message);
+  }
+
   console.log('\nتفکیک دسته‌ها:');
   for (const c of report.byCategory) console.log(`  ${String(c.count).padStart(4)}  ${c.category}`);
 }

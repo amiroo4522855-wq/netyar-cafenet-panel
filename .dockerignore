@@ -1,0 +1,13 @@
+.git
+.github
+node_modules
+npm-debug.log*
+docs/deploy-notes.local.md
+
+# اسناد حساس و داده‌های زمان اجرا هرگز وارد ایمیج نمی‌شوند
+server/.credentials.json
+server/.secret.key
+data/userdata.json
+data/admin-overrides.json
+data/test-report.json
+.env

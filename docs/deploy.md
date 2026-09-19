@@ -85,16 +85,35 @@ PORT=3000 HOST=0.0.0.0 node server/index.js
 ببیند. صفحات `/c/` دقیقاً همان فهرست را **بدون نیاز به ورود** در HTML خام ارائه
 می‌دهند، پس crawl و ایندکس می‌شوند و به سایت‌های مقصد هم لینک واقعی می‌دهند.
 
+### چه چیزی همین حالا آنلاین و قابل ایندکس است
+
+| نشانی | وضعیت |
+|---|---|
+| <https://amiroo4522855-wq.github.io/netyar-cafenet-panel/> | ✅ زنده — GitHub Pages فعال، `robots.txt` و `sitemap.xml` سرو می‌شوند |
+| <https://github.com/amiroo4522855-wq/netyar-cafenet-panel> | ✅ عمومی شد |
+
+این دو نشانی بدون هیچ دیپلوی اضافی، محتوای واقعی و قابل crawl دارند:
+صفحه معرفی شامل فهرست دسته‌بندی‌ها، ۴۲ سامانه پرکاربرد با لینک مستقیم،
+روش اعتبارسنجی و راهنمای اجراست — به‌همراه Open Graph و JSON-LD.
+
+برای به‌روزرسانی آن پس از تغییر دیتاست:
+
+```bash
+npm run build:data && npm run pages && git add -A && git commit -m "docs: به‌روزرسانی صفحه عمومی" && git push
+```
+
+پس از push، GitHub Pages خودش ظرف یکی دو دقیقه بازسازی می‌شود.
+
 ### قدم‌های باقی‌مانده (باید شما انجام دهید)
 
-۱. **مخزن را عمومی کنید** (اگر می‌خواهید خود ریپو هم در گوگل باشد):
-   Settings → General → Danger Zone → **Change visibility → Public**
-   > تا وقتی Private است، گوگل هیچ‌وقت آن را نمی‌بیند.
+۱. ~~مخزن را عمومی کنید~~ — **انجام شد** ✅ (مخزن اکنون public است)
 
 ۲. **دیپلوی کنید** (بخش ۱) تا یک نشانی HTTPS زنده داشته باشید.
    گوگل نشانی‌های `localhost` را ایندکس نمی‌کند.
 
 ۳. **Google Search Console** — [search.google.com/search-console](https://search.google.com/search-console)
+   * همین حالا هم می‌توانید `https://amiroo4522855-wq.github.io/netyar-cafenet-panel/`
+     را به‌عنوان **URL prefix** اضافه کنید (روش HTML tag) و sitemap آن را ثبت کنید.
    * افزودن property با آدرس سرویس (روش **HTML tag** یا **Domain**)
    * اگر روش HTML tag را انتخاب کردید، محتوای متا را به من بدهید تا در
      `public/index.html` بگذارم، یا خودتان در `tools/seo.cjs` اضافه کنید.

@@ -86,6 +86,7 @@ npm run icons       # گذر سریع تکمیلی برای لوگوها
 npm run build:data  # تولید data/sites.json از داده‌های کیوریت‌شده + نتایج اعتبارسنجی
 npm run audit       # ممیزی کیفیت دیتاست (تکراری، فیلد خالی، لوگوی مفقود، …)
 npm run seo         # تولید صفحات عمومی SEO + robots.txt + sitemap.xml
+npm run pages       # تولید صفحه معرفی عمومی برای GitHub Pages
 npm test            # ۲۵ آزمون خودکار (احراز هویت، API، امنیت، دیتاست، SEO)
 ```
 
@@ -310,6 +311,17 @@ curl -X POST http://localhost:3000/api/admin/sites \
   ممکن است در شبکه داخل ایران فعال باشند؛ در صورت نیاز می‌توانید آن‌ها را
   دوباره به `data/candidates.tsv` اضافه و `npm run verify && npm run build:data`
   را اجرا کنید.
+
+---
+
+## ۷٫۴) نشانی‌های عمومی
+
+| نشانی | محتوا |
+|---|---|
+| <https://amiroo4522855-wq.github.io/netyar-cafenet-panel/> | صفحه معرفی عمومی (GitHub Pages) — قابل ایندکس، بدون رمز |
+| <https://github.com/amiroo4522855-wq/netyar-cafenet-panel> | مخزن پروژه (عمومی) |
+| `/c/` روی سرور پنل | فهرست کامل دسته‌بندی‌ها و سامانه‌ها — بدون رمز |
+| `/` روی سرور پنل | خود پنل؛ ورود با رمز دسترسی |
 
 ---
 
